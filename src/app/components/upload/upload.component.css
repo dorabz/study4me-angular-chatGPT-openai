@@ -1,0 +1,33 @@
+.file-upload-container{
+  display: flex !important;
+  height: 100% !important;
+  width: 100% !important;
+  flex-direction: column !important;
+  padding: 20px !important;
+
+}
+.title-container{
+  align-self: center !important;
+}
+.main-container{
+  align-self: center !important;
+  width: 40% !important;
+  justify-content: center !important;
+}
+.bottom-container{
+  align-self: center;
+}
+#fileName{
+  width: 100% !important;
+}
+#serverName{
+  width: 100% !important;
+  color: black;
+}
+.form-title{
+  align-self: center !important;
+}
+.ang-file-uploader{
+  padding-top:10px !important;
+  padding-bottom:10px !important;
+}
