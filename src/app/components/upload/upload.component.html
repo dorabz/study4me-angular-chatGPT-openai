@@ -1,1 +1,56 @@
-<p>upload works!</p>
+<div fxFlex ="100" fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="10px" class="file-upload-container">
+
+  <div class="main-container" fxLayout="column" fxLayoutAlign="space-around stretch">
+    <div class="whole-form">
+      <mat-card class="forms-mat-card">
+        <div class="form-title">
+          <p class="form-title-text"> Please fill in the form...</p>
+        </div>
+        <div class="form-body">
+          <form [formGroup]="fileUploadForm" (ngSubmit)="submitForm()">
+
+            <div class="server-name-input">
+              <span for="serverName">Server Name </span>
+              <fieldset>
+                <input id="serverName" name="serverName" formControlName="serverName" type="text">
+                <div
+                  *ngIf="!fileUploadForm.controls['serverName']?.valid && (fileUploadForm.controls['serverName']?.dirty ||fileUploadForm.controls['serverName']?.touched)">
+                  <div [hidden]="!fileUploadForm.controls['serverName'].errors?.required">
+                    Server Name is required!
+                  </div>
+                  <div [hidden]="!fileUploadForm.controls['serverName'].errors?.maxlength">
+                    Max name length is 20 characters!
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="form-group">
+              <span for="file">File</span>
+              <input
+                  formControlName="file"
+                  id="file"
+                  type="file"
+                  class="form-control"
+                  (change)="onFileChange($event)">
+                  <div *ngIf="fileUploadForm.controls['file'].touched && fileUploadForm.controls['file'].invalid" class="alert alert-danger">
+                  <div *ngIf="fileUploadForm.controls['file'].errors.required">File is required.</div>
+              </div>
+          </div>
+
+
+            <div class="submit-button">
+              <button mat-button type="submit" [disabled]="!fileUploadForm.valid">Submit</button>
+            </div>
+          </form>
+
+
+        </div>
+      </mat-card>
+
+    </div>
+  </div>
+
+</div>
+
+
