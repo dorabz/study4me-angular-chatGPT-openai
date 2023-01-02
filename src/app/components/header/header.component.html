@@ -1,4 +1,44 @@
-<h1>Study4Me</h1>
-<a class="button-link" routerLink="/upload">UPLOAD</a>
-<a class="button-link" routerLink="/result">RESULT</a>
+<header>
+  <div class="logo">
+    <img class="logoimg" routerLink="/upload" src="../../../assets/images/logo_study4me.png" alt="logo">
+  </div>
+
+  <div class="menu" [class.menuClass]="menuVariable">
+    <ul>
+      <li><a routerLink="/upload">Upload</a></li>
+      <li><a routerLink="/result">Results</a></li>
+      <!--
+      <li><a routerLink="/catalog">Cjenik</a></li>
+      <li><a routerLink="/gallery">Galerija</a></li>
+      <li><a routerLink="/trainers">Treneri</a></li>
+      <li><a routerLink="/about">O nama</a></li>
+      <li><a routerLink="/contact">Kontakt</a></li>
+      <li *ngIf="userType==1"><a routerLink="/reservations">Prijava u termin</a></li>
+      <li *ngIf="userType==2">
+        <a  [matMenuTriggerFor]="menu">Admin panel</a>
+        <mat-menu #menu="matMenu">
+          <a routerLink="/admin-panel" mat-menu-item>Članarine</a>
+          <a routerLink="/admin-panel/ap-trainers" mat-menu-item>Uređivanje trenera</a>
+          <a routerLink="/admin-panel/ap-catalog" mat-menu-item>Uređivanje cjenika</a>
+          <a routerLink="/admin-panel/ap-programs" mat-menu-item>Uređivanje programa</a>
+          <a routerLink="/admin-panel/ap-schedule" mat-menu-item>Uređivanje rasporeda</a>
+          <a routerLink="/admin-panel/ap-gallery" mat-menu-item>Uređivanje galerija</a>
+        </mat-menu>
+      </li>
+      <li *ngIf="userType!=1 && userType!=2"><a routerLink="/login" class="prijavaButton">Prijava</a></li>
+      <li *ngIf="userType==1 || userType==2"><a (click)="onClick()" class="prijavaButton">Odjava</a></li>-->
+    </ul>
+  </div>
+  <!--
+  <div class="menu_icon" [class.menu_iconClass]="menu_icon_variable" (click)="openMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>-->
+
+  <!-- <div class="rectangle"></div> -->
+</header>
+
+
+
 

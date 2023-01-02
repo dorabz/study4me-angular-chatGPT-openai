@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule} from '@angular/material/menu';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SliceWordsPipe } from './pipes/slice-words.pipe';
+import { ExpandedDialogueComponent } from './components/dialogues/expanded-dialogue/expanded-dialogue.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -26,10 +31,13 @@ import { HttpClientModule } from '@angular/common/http';
     UploadComponent,
     ResultComponent,
     NotFoundComponent,
-    HeaderComponent
+    HeaderComponent,
+    SliceWordsPipe,
+    ExpandedDialogueComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
@@ -41,7 +49,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatListModule,
     MatInputModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

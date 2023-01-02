@@ -7,25 +7,46 @@
           <p class="form-title-text"> Please fill in the form...</p>
         </div>
         <div class="form-body">
-          <form [formGroup]="fileUploadForm" (ngSubmit)="submitForm()">
-
+          <form [formGroup]="textUploadForm" (ngSubmit)="submitForm()">
             <div class="server-name-input">
-              <span for="serverName">Server Name </span>
+              <span for="text">Title:</span>
               <fieldset>
-                <input id="serverName" name="serverName" formControlName="serverName" type="text">
+                <input id="serverName" name="serverName" formControlName="title" type="text">
                 <div
-                  *ngIf="!fileUploadForm.controls['serverName']?.valid && (fileUploadForm.controls['serverName']?.dirty ||fileUploadForm.controls['serverName']?.touched)">
-                  <div [hidden]="!fileUploadForm.controls['serverName'].errors?.required">
-                    Server Name is required!
+                  *ngIf="!textUploadForm.controls['title']?.valid && (textUploadForm.controls['title']?.dirty ||textUploadForm.controls['title']?.touched)">
+                  <div [hidden]="!textUploadForm.controls['title'].errors?.required">
+                    Title is required!
                   </div>
-                  <div [hidden]="!fileUploadForm.controls['serverName'].errors?.maxlength">
-                    Max name length is 20 characters!
+                  <div [hidden]="!textUploadForm.controls['title'].errors?.minlength">
+                    Min title length is 5 characters!
+                  </div>
+                  <div [hidden]="!textUploadForm.controls['title'].errors?.maxlength">
+                    Max title length is 50 characters!
                   </div>
                 </div>
               </fieldset>
             </div>
 
-            <div class="form-group">
+            <div class="server-name-input">
+              <span for="text">Text:</span>
+              <fieldset>
+                <input id="serverName" name="serverName" formControlName="text" type="text">
+                <div
+                  *ngIf="!textUploadForm.controls['text']?.valid && (textUploadForm.controls['text']?.dirty ||textUploadForm.controls['text']?.touched)">
+                  <div [hidden]="!textUploadForm.controls['text'].errors?.required">
+                    Text is required!
+                  </div>
+                  <div [hidden]="!textUploadForm.controls['text'].errors?.minlength">
+                    Min text length is 100 characters!
+                  </div>
+                  <div [hidden]="!textUploadForm.controls['text'].errors?.maxlength">
+                    Max text length is 100000 characters!
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <!--<div class="form-group">
               <span for="file">File</span>
               <input
                   formControlName="file"
@@ -33,14 +54,16 @@
                   type="file"
                   class="form-control"
                   (change)="onFileChange($event)">
-                  <div *ngIf="fileUploadForm.controls['file'].touched && fileUploadForm.controls['file'].invalid" class="alert alert-danger">
-                  <div *ngIf="fileUploadForm.controls['file'].errors.required">File is required.</div>
-              </div>
-          </div>
+                  <div *ngIf="textUploadForm.controls['file'].touched && textUploadForm.controls['file'].invalid" class="alert alert-danger">
+                    <div *ngIf="textUploadForm.controls['file'].errors.required">
+                      File is required.
+                    </div>
+                  </div>
+            </div>-->
 
 
             <div class="submit-button">
-              <button mat-button type="submit" [disabled]="!fileUploadForm.valid">Submit</button>
+              <button mat-button type="submit" [disabled]="!textUploadForm.valid">Submit</button>
             </div>
           </form>
 
@@ -49,6 +72,21 @@
       </mat-card>
 
     </div>
+  </div>
+  <mat-progress-spinner *ngIf="isUploading === true"
+        class="example-margin"
+        color="warn"
+        mode="indeterminate">
+    </mat-progress-spinner>
+
+
+  <div *ngIf="isUploaded === true" class="result-ready-container">
+    <h2>
+      Check out your result:
+    </h2>
+    <button routerLink="/result" mat-button>
+      Here!
+    </button>
   </div>
 
 </div>

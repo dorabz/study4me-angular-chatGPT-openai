@@ -1,0 +1,124 @@
+@font-face {
+  font-family: "Futura Hv";
+  src: url(../../../assets/fonts/FutuHv.ttf);
+}
+*{
+  font-family: "Futura Hv", sans-serif;
+  z-index: 3;
+}
+header{
+  background-color: black;
+  display: flex;
+  align-items: center;
+}
+.rectangle{
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 104px;
+  left: 0;
+  top: 106px;
+  background: linear-gradient(90deg, rgba(231, 204, 91, 0.05) 0%, rgba(41, 42, 44, 0.05) 100%);
+}
+.logo:hover{
+  cursor: pointer;
+}
+.logoimg{
+  margin: 10px;
+  width: 100px;
+}
+.menu{
+  margin-right: 20px;
+}
+.menu ul{
+  margin: 0;
+  padding: 0;
+}
+.menu ul li{
+  display: inline;
+  list-style-type: none;
+  margin-left: 24px;
+}
+.menu ul li a{
+  list-style: none;
+  text-decoration: none;
+  color: #ffffff;
+  flex-direction: row;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 29px;
+  letter-spacing: 0;
+  text-align: center;
+  font-family: "Futura Hv", sans-serif;
+}
+.menu ul li a:hover{
+  cursor: pointer;
+  color: #E7CC5B;
+  transition: 0.12s ease-in-out;
+}
+.menu ul li a:active{
+  color: #E7CC5B;
+}
+.prijavaButton{
+  background-color: #E7CC5B;
+  color: black !important;
+  padding: 5px;
+}
+.prijavaButton:hover{
+  background-color: hsl(48, 100%, 70%);
+  transition: 0.12s ease-in-out;
+}
+
+@media(max-width: 975px){
+  .menu{
+    position: fixed;
+    right: -300px;
+    top:0;
+    width: 260px;
+    height: 100%;
+    background: #222;
+    transition: 0.1s linear;
+    z-index: 100;
+  }
+  .menu ul{
+    padding: 15px 0 0 40px;
+  }
+  .menu ul li {
+    display: block;
+    text-align: left;
+    margin: 0;
+    padding: 10px 0 10px 10px;
+    border-bottom: 1px solid #312f2f;
+  }
+  .menu_icon{
+    display: inline-block;
+    position: absolute;
+    right: 45px;
+    top: 45px;
+    z-index: 101;
+  }
+  .menu_icon span {
+    width: 32px;
+    height: 3px;
+    background: #ffffff;
+    display: block;
+    transition: 0.1s ease-in-out;
+  }
+  .menu_icon span:nth-child(2) {
+    margin: 4px 0;
+  }
+  .menu_iconClass span:nth-child(2){
+    display: none;
+  }
+  .menu_iconClass span:nth-child(1){
+    transform: rotate(40deg);
+  }
+  .menu_iconClass span:nth-child(3){
+    transform: rotate(-40deg);
+    margin-top: -3px;
+  }
+  .menuClass{
+    right: -20px;
+    transition: 0.2s ease-in-out;
+  }
+}
