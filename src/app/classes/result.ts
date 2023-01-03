@@ -5,6 +5,5 @@ export class Result {
   title? : string;
   text? : string;
   summary? : string;
-  questions? : string;
-  corectness? : string;
+  question? : string;
 }

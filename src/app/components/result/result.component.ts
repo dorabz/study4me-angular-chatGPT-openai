@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Result } from 'src/app/classes/result';
 import { ResultService } from 'src/app/services/result.service';
 import { ExpandedDialogueComponent } from '../dialogues/expanded-dialogue/expanded-dialogue.component';
+import { QuestionDialogueComponent } from '../dialogues/question-dialogue/question-dialogue.component';
 
 @Component({
   selector: 'app-result',
@@ -50,7 +51,6 @@ export class ResultComponent implements OnInit {
         title : result?.title,
         text : result?.text,
         summary : result?.summary,
-        questions : result?.questions,
         type : 'TEXT'
       }
     });
@@ -63,21 +63,18 @@ export class ResultComponent implements OnInit {
         title : result?.title,
         text : result?.text,
         summary : result?.summary,
-        questions : result?.questions,
         type : 'SUMMARY'
       }
     });
   }
 
   openQuestions(result? : Result) : void {
-    const dialogRef = this.dialog.open(ExpandedDialogueComponent, {
+    const dialogRef = this.dialog.open(QuestionDialogueComponent, {
       width: '800px',
       data: {
         title : result?.title,
-        text : result?.text,
         summary : result?.summary,
-        questions : result?.questions,
-        type : 'QUESTIONS'
+        question : result?.question,
       }
     });
   }

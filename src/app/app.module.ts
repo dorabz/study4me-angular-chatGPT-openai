@@ -24,6 +24,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SliceWordsPipe } from './pipes/slice-words.pipe';
 import { ExpandedDialogueComponent } from './components/dialogues/expanded-dialogue/expanded-dialogue.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { QuestionDialogueComponent } from './components/dialogues/question-dialogue/question-dialogue.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     NotFoundComponent,
     HeaderComponent,
     SliceWordsPipe,
-    ExpandedDialogueComponent
+    ExpandedDialogueComponent,
+    QuestionDialogueComponent
   ],
   imports: [
     BrowserModule,

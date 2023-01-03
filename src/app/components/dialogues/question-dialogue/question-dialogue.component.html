@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>{{data.title}} - Questions</h1>
+<div mat-dialog-content>
+  <p>
+    {{data.question}}
+  </p>
+</div>
+<div class="button-row">
+  <div class="button-cell">
+    <button class= "Yes-button" mat-button (click)="onToggleVisibility()">Toggle Answer</button>
+    <button class= "Yes-button" mat-button (click)="onCloseClick()">Go Back</button>
+  </div>
+</div>

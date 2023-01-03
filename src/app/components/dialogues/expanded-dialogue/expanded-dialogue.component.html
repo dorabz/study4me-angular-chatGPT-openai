@@ -1,11 +1,10 @@
 <h1 mat-dialog-title>
   <p *ngIf="data.type === 'TEXT'">{{data.title}} - Text</p>
   <p *ngIf="data.type === 'SUMMARY'">{{data.title}} - Summary</p>
-  <p *ngIf="data.type === 'QUESTIONS'">{{data.title}} - Questions</p></h1>
+</h1>
 <div mat-dialog-content>
   <p *ngIf="data.type === 'TEXT'">{{data.text}}</p>
   <p *ngIf="data.type === 'SUMMARY'">{{summary.text}}</p>
-  <p *ngIf="data.type === 'QUESTIONS'">{{data.questions}}</p>
 </div>
 <div class="button-row">
   <div class="button-cell">
