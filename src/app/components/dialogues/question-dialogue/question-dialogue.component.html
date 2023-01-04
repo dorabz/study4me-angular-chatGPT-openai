@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>{{data.title}} - Questions</h1>
+<div mat-dialog-content>
+  <p>
+    {{data.question}}
+  </p>
+  <mat-form-field appearance="outline">
+    <mat-label class="label">Answer:</mat-label>
+    <textarea matInput [(ngModel)]="answerText"
+              cdkTextareaAutosize
+              #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="1"
+              cdkAutosizeMaxRows="5"></textarea>
+  </mat-form-field>
+  <div *ngIf="answerResponse !== undefined">
+    <p>
+      OPENAI Answer:
+    {{answerResponse.correctness}}
+    </p>
+  </div>
+</div>
+<div class="button-row">
+  <div class="button-cell">
+    <button class= "Yes-button" mat-button (click)="onSubmitAnswer()">Submit Answer</button>
+    <button class= "Yes-button" mat-button (click)="onCloseClick()">Go Back</button>
+  </div>
+</div>

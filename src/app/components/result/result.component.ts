@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Result } from 'src/app/classes/result';
 import { ResultService } from 'src/app/services/result.service';
 import { ExpandedDialogueComponent } from '../dialogues/expanded-dialogue/expanded-dialogue.component';
+import { QuestionDialogueComponent } from '../dialogues/question-dialogue/question-dialogue.component';
 
 @Component({
   selector: 'app-result',
@@ -22,10 +23,8 @@ export class ResultComponent implements OnInit {
   }
 
   initializePage(): void {
-    console.log('calling get results');
     this.results = [];
     this._resultService.getResults().subscribe((res : Result[]) => {
-      console.log(res);
       if(res.length > 0) {
         res.forEach(element => {
           this.results.push(element);
@@ -35,7 +34,6 @@ export class ResultComponent implements OnInit {
   }
 
   deleteResult(result : Result) : void {
-    console.log(result.id);
     if(result.id != undefined && result.id != null) {
       this._resultService.deleteResult(result.id).subscribe(()=> {
         this.initializePage();
@@ -50,7 +48,6 @@ export class ResultComponent implements OnInit {
         title : result?.title,
         text : result?.text,
         summary : result?.summary,
-        questions : result?.questions,
         type : 'TEXT'
       }
     });
@@ -63,21 +60,19 @@ export class ResultComponent implements OnInit {
         title : result?.title,
         text : result?.text,
         summary : result?.summary,
-        questions : result?.questions,
         type : 'SUMMARY'
       }
     });
   }
 
   openQuestions(result? : Result) : void {
-    const dialogRef = this.dialog.open(ExpandedDialogueComponent, {
+    const dialogRef = this.dialog.open(QuestionDialogueComponent, {
       width: '800px',
       data: {
+        id: result?.id,
         title : result?.title,
-        text : result?.text,
         summary : result?.summary,
-        questions : result?.questions,
-        type : 'QUESTIONS'
+        question : result?.question,
       }
     });
   }
