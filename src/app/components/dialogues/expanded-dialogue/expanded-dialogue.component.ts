@@ -24,7 +24,6 @@ export class ExpandedDialogueComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-
     this.summary = this.summaryJsonParser(this.data.summary!);
   }
 

@@ -1,8 +1,13 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { time } from 'console';
+import { AnswerRequest } from 'src/app/classes/answerRequest';
+import { AnswerResponse } from 'src/app/classes/answerResponse';
 import { Summary } from 'src/app/classes/summary';
+import { AnswerService } from 'src/app/services/answer.service';
 
 export interface DialogData {
+  id?: number;
   title?: string;
   summary?: string;
   question?: string;
@@ -14,49 +19,35 @@ export interface DialogData {
   styleUrls: ['./question-dialogue.component.css']
 })
 export class QuestionDialogueComponent implements OnInit {
-  public summary = new Summary();
-  public isAnswerVisible : boolean = false;
+  public answerText = '';
+  public answerObject = new AnswerRequest();
+  public answerResponse? : AnswerResponse;
 
   constructor(
     public dialogRef: MatDialogRef<QuestionDialogueComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private _answerService: AnswerService
   ) { }
 
   ngOnInit(): void {
-    //var str =  this.data.summary!;
-    //str
-    //str = str.replace(/'/g, '"');
-    // str = str.replace("\'logprobs\': None", "\"logprobs\": \"None\"");
-    // this.summary = JSON.parse(JSON.stringify(str));
-    // console.log(this.summary.text);
-
-    this.summary = this.summaryJsonParser(this.data.summary!);
   }
 
   onCloseClick(): void {
     this.dialogRef.close();
   }
 
-  onToggleVisibility(): void {
-    this.isAnswerVisible = !this.isAnswerVisible;
+  onSubmitAnswer(): void {
+    const answerRequest : AnswerRequest = {
+      post: this.data.id,
+      answer : this.answerText
+    }
+    this.answerObject.post = answerRequest.post;
+    this.answerObject.answer = answerRequest.answer;
+    this._answerService.uploadAnswer(answerRequest).subscribe((res : any)=> {
+      this.answerObject.id = res.id;
+      this._answerService.getAnswerById(res.id).subscribe((res : any)=> {
+        this.answerResponse = res;
+      });
+    });
   }
-
-  summaryJsonParser(summaryText : string) : Summary {
-    var str = summaryText;
-    console.log(str);
-    str = str.replace(/"/g, "'");
-    console.log(str);
-    str = str.replace("{\'text\': \'", "{\"text\": \"");
-    str = str.replace("\', \'index\': 0, \'", "\", \"index\": \"0\", \"");
-    str = str.replace("logprobs\': None, \'", "logprobs\": \"None\", \"");
-    str = str.replace("\': \'stop\'}", "\": \"stop\"}");
-    console.log(str);
-    //str = str.replace("\\\'s", "\'s");
-    str = str.replace(/\\'/g,"'");
-    console.log(str);
-    var finalSummary = new Summary();
-    finalSummary = JSON.parse(str);
-    return finalSummary;
-  }
-
 }

@@ -23,10 +23,8 @@ export class ResultComponent implements OnInit {
   }
 
   initializePage(): void {
-    console.log('calling get results');
     this.results = [];
     this._resultService.getResults().subscribe((res : Result[]) => {
-      console.log(res);
       if(res.length > 0) {
         res.forEach(element => {
           this.results.push(element);
@@ -36,7 +34,6 @@ export class ResultComponent implements OnInit {
   }
 
   deleteResult(result : Result) : void {
-    console.log(result.id);
     if(result.id != undefined && result.id != null) {
       this._resultService.deleteResult(result.id).subscribe(()=> {
         this.initializePage();
@@ -72,6 +69,7 @@ export class ResultComponent implements OnInit {
     const dialogRef = this.dialog.open(QuestionDialogueComponent, {
       width: '800px',
       data: {
+        id: result?.id,
         title : result?.title,
         summary : result?.summary,
         question : result?.question,
