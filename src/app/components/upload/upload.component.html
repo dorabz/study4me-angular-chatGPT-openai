@@ -1,17 +1,11 @@
-<div fxFlex ="100" fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="10px" class="file-upload-container">
+<section class="heading">
+    <h3>Please fill in the form...</h3>
+</section>
 
-  <div class="main-container" fxLayout="column" fxLayoutAlign="space-around stretch">
-    <div class="whole-form">
-      <mat-card class="forms-mat-card">
-        <div class="form-title">
-          <p class="form-title-text"> Please fill in the form...</p>
-        </div>
-        <div class="form-body">
-          <form [formGroup]="textUploadForm" (ngSubmit)="submitForm()">
-            <div class="server-name-input">
-              <span for="text">Title:</span>
-              <fieldset>
-                <input id="serverName" name="serverName" formControlName="title" type="text">
+<section class="contact">
+    <div class="row">
+        <form [formGroup]="textUploadForm" (ngSubmit)="submitForm()">
+                <input id="serverName" name="serverName" formControlName="title" type="text" placeholder="Title" class="box">
                 <div
                   *ngIf="!textUploadForm.controls['title']?.valid && (textUploadForm.controls['title']?.dirty ||textUploadForm.controls['title']?.touched)">
                   <div [hidden]="!textUploadForm.controls['title'].errors?.required">
@@ -24,13 +18,9 @@
                     Max title length is 50 characters!
                   </div>
                 </div>
-              </fieldset>
-            </div>
-
-            <div class="server-name-input">
-              <span for="text">Text:</span>
-              <fieldset>
-                <input id="serverName" name="serverName" formControlName="text" type="text">
+          
+              
+                <input id="serverName" name="serverName" formControlName="text" placeholder="Text" cols="30" rows="10" type="text" class="box">
                 <div
                   *ngIf="!textUploadForm.controls['text']?.valid && (textUploadForm.controls['text']?.dirty ||textUploadForm.controls['text']?.touched)">
                   <div [hidden]="!textUploadForm.controls['text'].errors?.required">
@@ -43,52 +33,21 @@
                     Max text length is 100000 characters!
                   </div>
                 </div>
-              </fieldset>
-            </div>
-
-            <!--<div class="form-group">
-              <span for="file">File</span>
-              <input
-                  formControlName="file"
-                  id="file"
-                  type="file"
-                  class="form-control"
-                  (change)="onFileChange($event)">
-                  <div *ngIf="textUploadForm.controls['file'].touched && textUploadForm.controls['file'].invalid" class="alert alert-danger">
-                    <div *ngIf="textUploadForm.controls['file'].errors.required">
-                      File is required.
-                    </div>
-                  </div>
-            </div>-->
+              
 
 
             <div class="submit-button">
-              <button mat-button type="submit" [disabled]="!textUploadForm.valid">Submit</button>
+                <input type="submit" value="Submit" [disabled]="!textUploadForm.valid" class="btn">
+              <!--<button mat-button type="submit" [disabled]="!textUploadForm.valid">Submit</button>-->
+            </div>
+            <mat-progress-spinner *ngIf="isUploading === true"
+                class="example-margin"
+                color="warn"
+                mode="indeterminate">
+                </mat-progress-spinner>
+            <div *ngIf="isUploaded === true" class="result-ready-container">
+                <a routerLink="/result" class="btn">Check out your result here!</a>
             </div>
           </form>
-
-
-        </div>
-      </mat-card>
-
     </div>
-  </div>
-  <mat-progress-spinner *ngIf="isUploading === true"
-        class="example-margin"
-        color="warn"
-        mode="indeterminate">
-    </mat-progress-spinner>
-
-
-  <div *ngIf="isUploaded === true" class="result-ready-container">
-    <h2>
-      Check out your result:
-    </h2>
-    <button routerLink="/result" mat-button>
-      Here!
-    </button>
-  </div>
-
-</div>
-
-
+</section>

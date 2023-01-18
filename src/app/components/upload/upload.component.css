@@ -1,32 +1,173 @@
-.file-upload-container{
-  display: flex !important;
-  height: 100% !important;
-  width: 100% !important;
-  flex-direction: column !important;
-  padding-top: 20px !important;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-transform: capitalize;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  -webkit-transition: all .2s linear;
+  transition: all .2s linear;
 }
-.title-container{
-  align-self: center !important;
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
 }
-.main-container{
-  align-self: center !important;
-  width: 40% !important;
-  justify-content: center !important;
+
+section {
+  padding: 3rem 9%;
 }
-.bottom-container{
-  align-self: center;
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 1rem 3rem;
+  background: #e9edfb;
+  color: #224bcf;
+  cursor: pointer;
+  border-radius: .5rem;
+  font-size: 1.7rem;
 }
+
+.btn:hover {
+  color: #fff;
+  background: #224bcf;
+}
+
+.heading {
+  background: url(../../../assets/images/heading-bg.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.heading h3 {
+  font-size: 3.5rem;
+  color: #302851;
+}
+
+.heading p {
+  font-size: 1.6rem;
+  color: #666;
+  padding-top: .5rem;
+}
+
+.heading p a {
+  padding-right: .5rem;
+  color: #fa1d86;
+}
+
+.heading p a:hover {
+  color: #224bcf;
+}
+
+.contact .icons-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(30rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 1.5rem;
+}
+
+.contact .icons-container .icons {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 1rem;
+  background: #f5f5f5;
+  margin-bottom: 2rem;
+}
+
+.contact .icons-container .icons i {
+  height: 6.5rem;
+  width: 6.5rem;
+  line-height: 6.5rem;
+  font-size: 2.5rem;
+  color: #224bcf;
+  background: #e9edfb;
+  border-radius: 50%;
+  text-align: center;
+  margin-bottom: .5rem;
+}
+
+.contact .icons-container .icons h3 {
+  font-size: 2rem;
+  color: #302851;
+  padding: .7rem 0;
+}
+
+.contact .icons-container .icons p {
+  line-height: 2;
+  font-size: 1.4rem;
+  color: #666;
+}
+
+.contact .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.contact .row form {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 42rem;
+          flex: 1 1 42rem;
+  border-radius: 1rem;
+  background: #f5f5f5;
+  padding: 2rem;
+}
+
+.contact .row form h3 {
+  font-size: 2.5rem;
+  color: #302851;
+  margin-bottom: .5rem;
+}
+
+.contact .row form .box, .contact .row form textarea {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  font-size: 1.6rem;
+  color: #666;
+  text-transform: none;
+  margin: 1rem 0;
+  border-radius: .5rem;
+  background: #fff;
+}
+
+.contact .row form textarea {
+  height: 15rem;
+  resize: none;
+}
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 55%;
+  }
+  section {
+    padding: 3rem 2rem;
+  }
+}
+@media (max-width: 768px) {
+  #menu-btn {
+    display: inline-block;
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+}
+
 #fileName{
   width: 100% !important;
 }
 #serverName{
   width: 100% !important;
   color: black;
-}
-.form-title{
-  align-self: center !important;
-}
-.ang-file-uploader{
-  padding-top:10px !important;
-  padding-bottom:10px !important;
 }
