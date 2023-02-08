@@ -1,3 +1,6 @@
+Study4me is a web platform that helps users test their knowledge on specific topic, it writes summary on topic, asks users questions and validates answers. This is repository for frontend part of application written in Angular.
+
+
 # Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.6.
